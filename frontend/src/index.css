@@ -1,2 +1,66 @@
 @import "tailwindcss";
 
+/* 
+   GLOBAL CURSOR RESET 
+   Force everything to have a default (arrow) cursor initially.
+   This ensures headings, paragraphs, and static text do NOT show the I-beam (text cursor).
+*/
+*,
+*::before,
+*::after {
+    cursor: default;
+}
+
+/* 
+   INTERACTIVE ELEMENTS 
+   Force pointer cursor for anything clickable.
+*/
+a,
+button,
+[role="button"],
+label,
+select,
+summary,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+input[type="checkbox"],
+input[type="radio"],
+input[type="file"] {
+    cursor: pointer !important;
+}
+
+/* 
+   Ensure children of clickable elements inherit the pointer 
+   (e.g., text inside a button, icon inside a link)
+*/
+a *,
+button *,
+[role="button"] *,
+label * {
+    cursor: pointer !important;
+}
+
+/* 
+   TEXT INPUTS & EDITABLE AREAS
+   Only these specific elements should show the I-beam (text) cursor.
+*/
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea,
+[contenteditable="true"] {
+    cursor: text !important;
+}
+
+/* 
+   Catch-all for other textual inputs not explicitly listed above, 
+   excluding button-like inputs.
+*/
+input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]) {
+    cursor: text !important;
+}
